@@ -27,6 +27,7 @@ require "paq-nvim" {
   "mhartington/formatter.nvim",
   "neovim/nvim-lspconfig",
   "nvim-lua/plenary.nvim",
+  "akinsho/flutter-tools.nvim",
   "nvim-lua/popup.nvim",
   "nvim-telescope/telescope.nvim",
   "nvim-treesitter/nvim-treesitter",
@@ -41,7 +42,8 @@ require "paq-nvim" {
   "junegunn/fzf",
   "romgrk/barbar.nvim",
   "danilo-augusto/vim-afterglow",
-  "ayu-theme/ayu-vim"
+  "ayu-theme/ayu-vim",
+  "lukas-reineke/indent-blankline.nvim"
 }
 
 
@@ -116,6 +118,9 @@ saga.init_lsp_saga {
   warn_sign = ""
 }
 
+-- fluuter setup
+require("flutter-tools").setup{}
+
 map("n", "<leader>cf", ":Lspsaga lsp_finder<CR>", {silent = true})
 map("n", "<leader>ca", ":Lspsaga code_action<CR>", {silent = true})
 map("v", "<leader>ca", ":<C-U>Lspsaga range_code_action<CR>", {silent = true})
@@ -138,6 +143,18 @@ cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
 
 vim.g.Illuminate_delay = 500
 -- cmd([[autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline]], true)
+
+
+-- setup indent line
+require("indent_blankline").setup {
+    char = "|",
+    buftype_exclude = {"terminal"},
+    space_char_blankline = "|",
+    use_treesitter = true,
+    show_end_of_line = true
+}
+
+-- vim.g.indent_blankline_use_treesitter = true
 
 cmd [[colorscheme ayu]] 
 

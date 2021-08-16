@@ -60,6 +60,7 @@ local sessionopts = {
 
 require("auto-session").setup(sessionopts)
 
+-- Godot LSP config
 local lsp_conf = require'lspconfig'
 lsp_conf.gdscript.setup{
     on_attach = function (client)

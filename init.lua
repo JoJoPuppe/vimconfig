@@ -136,6 +136,9 @@ map("n", "<leader>cr", ":Lspsaga rename<CR>", {silent = true})
 map("n", "<leader>cd", ":Lspsaga preview_definition<CR>", {silent = true})
 
 
+map("n", "<leader>0", ":Format<CR>", {silent = true})
+
+
 -- Setup treesitter
 local ts = require "nvim-treesitter.configs"
 ts.setup {ensure_installed = "maintained", highlight = {enable = true}}
@@ -422,6 +425,16 @@ local prettier = function()
   }
 end
 
+
+local dartfmt = function()
+  return {
+    exe = "dart",
+    args = {"format", "--output=show", vim.api.nvim_buf_get_name(0), "|", "sed", "'$d'"},
+    stdin = true,
+    -- cwd = vim.fn.expand('%:p:h')
+  }
+end
+
 require("formatter").setup(
   {
     logging = false,
@@ -432,6 +445,7 @@ require("formatter").setup(
       css = {prettier},
       scss = {prettier},
       python = {prettier},
+      dart = {dartfmt}
     }
   }
 )

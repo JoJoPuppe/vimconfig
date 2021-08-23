@@ -43,7 +43,7 @@ require "paq-nvim" {
   "romgrk/barbar.nvim",
   "danilo-augusto/vim-afterglow",
   "ayu-theme/ayu-vim",
-  "lukas-reineke/indent-blankline.nvim"
+  "lukas-reineke/indent-blankline.nvim",
 }
 
 
@@ -134,7 +134,6 @@ map("n", "<leader>cn", ":Lspsaga diagnostic_jump_next<CR>", {silent = true})
 map("n", "<leader>cp", ":Lspsaga diagnostic_jump_prev<CR>", {silent = true})
 map("n", "<leader>cr", ":Lspsaga rename<CR>", {silent = true})
 map("n", "<leader>cd", ":Lspsaga preview_definition<CR>", {silent = true})
-
 
 map("n", "<leader>0", ":Format<CR>", {silent = true})
 
